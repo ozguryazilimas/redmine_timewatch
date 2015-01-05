@@ -1,0 +1,15 @@
+
+# temporary editor files
+*.swp
+*~
+.DS_Store
+.idea/
+.env
+.#*
+*.kate-swp
+
+# junk
+.directory
+*.orig
+
+
