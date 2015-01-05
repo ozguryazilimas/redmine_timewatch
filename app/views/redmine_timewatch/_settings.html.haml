@@ -1,0 +1,10 @@
+%fieldset
+  %legend
+    This will be a setting
+
+  .tabular.settings
+    %p
+      = content_tag :label, 'Shall we do some setting'
+      = check_box_tag 'settings[foo][bar]', 1, settings[:foo][:bar]
+
+
