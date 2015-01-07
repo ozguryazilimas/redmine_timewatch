@@ -1,3 +1,13 @@
 # Turkish strings go here
 tr:
+  redmine_timewatch:
+    settings:
+      header: 'Öntanımlı Uyarı Ayarları'
+      info: 'Uyarı zaman eşik değeri, uyarı zaman aralığı ve uyarı düzeyi çarpılarak belirlenmektedir. Tüm uyarı zaman aralığı katlarında da eşik değeri geçilince uyarı yapılmaktadır.'
+      timebase: 'Uyarı zaman aralığı'
+      warning_ratio: 'Uyarı düzeyi'
+      recipients: 'Eposta alıcı adresleri'
+      recipients_info: 'virgül ile ayrılmış'
+      email_template: 'Eposta şablonu'
+      email_template_info: 'iş numarası için ISSUE_NUMBER ve toplam harcanan zaman için ISSUE_SPENT_TIME anahtar kelimeleri içermelidir'
 

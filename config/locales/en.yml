@@ -1,3 +1,13 @@
 # English strings go here
 en:
+  redmine_timewatch:
+    settings:
+      header: 'Default Notification Settings'
+      info: 'Notification threshold is calculated by multiplying time base interval with warning ratio. Notifications are send at every multitude of time base when threshold is passed.'
+      timebase: 'Notification time base interval in hours'
+      warning_ratio: 'Warning ratio'
+      recipients: 'Email recipients'
+      recipients_info: 'comma seperated'
+      email_template: 'Email template'
+      email_template_info: 'should include ISSUE_NUMBER for issue number and ISSUE_SPENT_TIME for issue spent time values'
 

@@ -1,13 +1,39 @@
 <fieldset>
   <legend>
-    This will be a setting
+    <h3>
+      <%= h l('redmine_timewatch.settings.header') %>
+    </h3>
   </legend>
 
-  <div class='tabular settings'>
+  <div class="tabular settings">
+    <%= h l('redmine_timewatch.settings.info') %>
+    <br>
+    <br>
+
     <p>
-      <%= content_tag :label, 'Shall we do some setting' %>
-      <%#= check_box_tag 'settings[foo][bar]', 1, settings[:foo][:bar] %>
-      <%= check_box_tag 'settings[foo][bar]', 1, 1 %>
+      <%= content_tag :label, l('redmine_timewatch.settings.timebase') %>
+      <%= number_field_tag 'settings[timebase]', settings[:timebase], {:min => 1} %>
+    </p>
+    <p>
+      <%= content_tag :label, l('redmine_timewatch.settings.warning_ratio') %>
+      <%= number_field_tag 'settings[warning_ratio]', settings[:warning_ratio], {:min => 1, :max => 99} %>
+      &#37;
+    </p>
+    <p>
+      <%= content_tag :label, l('redmine_timewatch.settings.recipients') + ' (*)' %>
+      <%= text_area_tag 'settings[recipients]', settings[:recipients], :rows => 5 %>
+    </p>
+    <p>
+      <%= content_tag :label, l('redmine_timewatch.settings.email_template') + ' (**)' %>
+      <%= text_area_tag 'settings[email_template]', settings[:email_template], :rows => 10 %>
+    </p>
+
+    <p>
+      <span>(*) = <%= l('redmine_timewatch.settings.recipients_info') %></span>
+    </p>
+
+    <p>
+    <span>(**) = <%= l('redmine_timewatch.settings.email_template_info') %></span>
     </p>
   </div>
 </fieldset>
