@@ -11,6 +11,19 @@ Redmine::Plugin.register :redmine_timewatch do
 
   settings :partial => 'redmine_timewatch/settings',
     :default => {
+      :timebase => 10,
+      :warning_ratio => 75,
+      :recipients => '',
+      :email_template => "\n" +
+        "ISSUE_NUMBER işi için harcanan zaman ISSUE_SPENT_TIME saate yaklaşmaktadır." +
+        "Bu işe daha fazla zaman harcanmamasını istiyorsanız lütfen iş kaydına yazarak belirtiniz.\n" +
+        "\n" +
+        "Bu iş için yapılanları işteki kayıtlardan öğrenebilir, açıklamaları yeterli bulmamanız halinde" +
+        "daha detaylı açıklama isteğinizi işe yazarak belirtebilirsiniz. Ekibimiz daha detaylı açıklama yapacaktır.\n" +
+        "\n" +
+        "Teşekkürler,\n" +
+        "İşlerGüçler Robotu\n" +
+        "\n"
     }
 end
 
