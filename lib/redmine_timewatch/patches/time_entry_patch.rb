@@ -21,7 +21,9 @@ module RedmineTimewatch
       module InstanceMethods
 
         def timewatch_spent_time_delta
-          Rails.logger.info "******** RTW issue: #{issue.id} has total spent hours #{issue.total_spent_hours}"
+          if issue
+            Rails.logger.info "******** RTW issue: #{issue.id} has total spent hours #{issue.total_spent_hours}"
+          end
         end
 
       end
