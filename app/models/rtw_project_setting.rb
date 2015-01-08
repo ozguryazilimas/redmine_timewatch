@@ -14,10 +14,20 @@ class RtwProjectSetting < ActiveRecord::Base
 
 
   def self.settings_for_project(proj_id)
-    settings = for_project(proj_id).first
-    settings = RedmineTimewatch.settings if settings.blank?
-
+    settings = for_project(proj_id).first_or_create(RedmineTimewatch.settings)
     settings
+  end
+
+  def warning_level
+    warning_ratio * timebase / 100.0
+  end
+
+  def calc_level(current_spent_time)
+    current_spent_time % timebase
+  end
+
+  def calc_factor(current_spent_time)
+    current_spent_time.to_i / timebase
   end
 
 end

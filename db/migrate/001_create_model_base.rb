@@ -1,7 +1,7 @@
 class CreateModelBase < ActiveRecord::Migration
 
   def change
-    create_table :rtw_notification_histories do |t|
+    create_table :rtw_notifications do |t|
       t.integer :issue_id
       t.float :spent_time
       t.integer :timebase
