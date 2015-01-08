@@ -8,6 +8,7 @@
  + logger.warn if time_entry matches conditions
  + project settings (recipient list, N base time, U warning percentage, email template)
  + store last_notification_time
+ - make email subject customizable
  - make email body customizable
  + store notification history (?)
 
