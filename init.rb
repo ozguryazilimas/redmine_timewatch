@@ -9,6 +9,12 @@ Redmine::Plugin.register :redmine_timewatch do
   author_url 'http://www.ozguryazilim.com.tr'
   requires_redmine :version_or_higher => '2.5.2'
 
+
+  project_module :timewatch do
+    permission :rtw_timewatch, { :projects => [:rtw_project_settings]}, :require=> :member
+  end
+
+
   settings :partial => 'redmine_timewatch/settings',
     :default => {
       :timebase => 10,
@@ -24,11 +30,14 @@ Redmine::Plugin.register :redmine_timewatch do
         "Teşekkürler,\n" +
         "İşlerGüçler Robotu\n"
     }
+
 end
 
 Rails.configuration.to_prepare do
   [
-    [TimeEntry, RedmineTimewatch::Patches::TimeEntryPatch]
+    [TimeEntry, RedmineTimewatch::Patches::TimeEntryPatch],
+    [ProjectsController, RedmineTimewatch::Patches::ProjectsControllerPatch],
+    [ProjectsHelper, RedmineTimewatch::Patches::ProjectsHelperPatch]
   ].each do |classname, modulename|
     unless classname.included_modules.include?(modulename)
       classname.send(:include, modulename)

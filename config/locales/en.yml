@@ -1,5 +1,6 @@
 # English strings go here
 en:
+  permission_rtw_timewatch: 'Time Threshold Notification'
   redmine_timewatch:
     settings:
       header: 'Default Notification Settings'
@@ -10,4 +11,7 @@ en:
       recipients_info: 'comma seperated'
       email_template: 'Email template'
       email_template_info: 'should include ISSUE_NUMBER for issue number and ISSUE_SPENT_TIME for issue spent time values'
+    project_settings:
+      label_timewatch: 'Time Alerts'
+      error_update_not_successful: 'Unable to update project notification settings'
 

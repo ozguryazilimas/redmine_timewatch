@@ -1,0 +1,54 @@
+<% settings = RtwProjectSetting.settings_for_project(@project) %>
+
+<%=
+  form_for @project,
+    :url => {:action => 'rtw_project_settings', :id => @project},
+    :html => {:id => 'rtw_project_settings-form', :method => :post} do |f|
+%>
+
+  <fieldset class="box">
+    <legend>
+      <%= l('redmine_timewatch.settings.header') %>
+    </legend>
+
+    <div class="tabular settings">
+      <%= h l('redmine_timewatch.settings.info') %>
+      <br>
+      <br>
+      <%= hidden_field_tag 'settings[project_id]', @project.id %>
+
+      <p>
+        <%= content_tag :label, l('redmine_timewatch.settings.timebase') %>
+        <%= number_field_tag 'settings[timebase]', settings[:timebase], {:min => 1} %>
+      </p>
+      <p>
+        <%= content_tag :label, l('redmine_timewatch.settings.warning_ratio') %>
+        <%= number_field_tag 'settings[warning_ratio]', settings[:warning_ratio], {:min => 1, :max => 99} %>
+        &#37;
+      </p>
+      <p>
+        <%= content_tag :label, l('redmine_timewatch.settings.recipients') + ' (*)' %>
+        <%= text_area_tag 'settings[recipients]', settings[:recipients], :rows => 5 %>
+      </p>
+      <p>
+        <%= content_tag :label, l('redmine_timewatch.settings.email_template') + ' (**)' %>
+        <%= text_area_tag 'settings[email_template]', settings[:email_template], :rows => 10 %>
+      </p>
+
+      <p>
+        <span>(*) = <%= l('redmine_timewatch.settings.recipients_info') %></span>
+      </p>
+
+      <p>
+      <span>(**) = <%= l('redmine_timewatch.settings.email_template_info') %></span>
+      </p>
+    </div>
+
+  </fieldset>
+
+  <p>
+    <%= submit_tag l(:button_save) %>
+  </p>
+
+<% end %>
+

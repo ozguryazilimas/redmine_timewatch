@@ -1,5 +1,6 @@
 # Turkish strings go here
 tr:
+  permission_rtw_timewatch: 'Zaman Eşiği Uyarısı'
   redmine_timewatch:
     settings:
       header: 'Öntanımlı Uyarı Ayarları'
@@ -10,4 +11,7 @@ tr:
       recipients_info: 'virgül ile ayrılmış'
       email_template: 'Eposta şablonu'
       email_template_info: 'iş numarası için ISSUE_NUMBER ve toplam harcanan zaman için ISSUE_SPENT_TIME anahtar kelimeleri içermelidir'
+    project_settings:
+      label_timewatch: 'Zaman Uyarısı'
+      error_update_not_successful: 'Proje uyarı ayarları güncellenirken bir sorun oluştu'
 
