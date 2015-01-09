@@ -8,7 +8,7 @@ en:
       timebase: 'Notification time base interval in hours'
       warning_ratio: 'Warning ratio'
       recipients: 'Email recipients'
-      recipients_info: 'comma seperated'
+      recipients_info: 'comma separated'
       email_subject: 'Email subject'
       email_template: 'Email template'
       email_template_info: 'should include ISSUE_NUMBER for issue number and ISSUE_SPENT_TIME for issue spent time values'

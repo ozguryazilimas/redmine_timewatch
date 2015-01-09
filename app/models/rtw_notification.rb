@@ -46,7 +46,7 @@ class RtwNotification < ActiveRecord::Base
   end
 
   def self.format_email_body(body, issue_info, target_time)
-    ret = body.gsub(/#{ISSUE_NUMBER}/, issue_info)
+    ret = body.gsub(/#{ISSUE_NUMBER}/, issue_info.to_s)
     ret = ret.gsub(/#{ISSUE_SPENT_TIME}/, target_time.to_s)
 
     ret
