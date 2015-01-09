@@ -27,7 +27,7 @@ module RedmineTimewatch
           if project_setting.save!
             flash[:notice] = l(:notice_successful_update)
           else
-            flash[:error] = l('redmine_timewatch.project_settings.error_update_not_successful:')
+            flash[:error] = l('redmine_timewatch.project_settings.error_update_not_successful')
           end
 
           redirect_to settings_project_path(@project, :tab => 'rtw_project_settings')
