@@ -20,6 +20,10 @@
       &#37;
     </p>
     <p>
+      <%= content_tag :label, l('redmine_timewatch.settings.email_subject') %>
+      <%= text_field_tag 'settings[email_subject]', settings[:email_subject] %>
+    </p>
+    <p>
       <%= content_tag :label, l('redmine_timewatch.settings.recipients') + ' (*)' %>
       <%= text_area_tag 'settings[recipients]', settings[:recipients], :rows => 5 %>
     </p>

@@ -20,15 +20,16 @@ Redmine::Plugin.register :redmine_timewatch do
       :timebase => 10,
       :warning_ratio => 75,
       :recipients => '',
+      :email_subject => 'Harcanan zaman uyarısı',
       :email_template => '' +
         "ISSUE_NUMBER işi için harcanan zaman ISSUE_SPENT_TIME saate yaklaşmaktadır." +
-        "Bu işe daha fazla zaman harcanmamasını istiyorsanız lütfen iş kaydına yazarak belirtiniz.\n" +
-        "\n" +
+        "Bu işe daha fazla zaman harcanmamasını istiyorsanız lütfen iş kaydına yazarak belirtiniz.\r\n" +
+        "\r\n" +
         "Bu iş için yapılanları işteki kayıtlardan öğrenebilir, açıklamaları yeterli bulmamanız halinde" +
-        "daha detaylı açıklama isteğinizi işe yazarak belirtebilirsiniz. Ekibimiz daha detaylı açıklama yapacaktır.\n" +
-        "\n" +
-        "Teşekkürler,\n" +
-        "İşlerGüçler Robotu\n"
+        "daha detaylı açıklama isteğinizi işe yazarak belirtebilirsiniz. Ekibimiz daha detaylı açıklama yapacaktır.\r\n" +
+        "\r\n" +
+        "Teşekkürler,\r\n" +
+        "İşlerGüçler Robotu\r\n"
     }
 
 end
@@ -37,7 +38,8 @@ Rails.configuration.to_prepare do
   [
     [TimeEntry, RedmineTimewatch::Patches::TimeEntryPatch],
     [ProjectsController, RedmineTimewatch::Patches::ProjectsControllerPatch],
-    [ProjectsHelper, RedmineTimewatch::Patches::ProjectsHelperPatch]
+    [ProjectsHelper, RedmineTimewatch::Patches::ProjectsHelperPatch],
+    [Mailer, RedmineTimewatch::Patches::MailerPatch]
   ].each do |classname, modulename|
     unless classname.included_modules.include?(modulename)
       classname.send(:include, modulename)

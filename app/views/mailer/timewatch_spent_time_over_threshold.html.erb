@@ -1,0 +1,23 @@
+<style>
+
+#redmine_timewatch_notification {
+  padding: 10px;
+}
+
+#redmine_timewatch_notification p {
+  white-space: pre-wrap;
+}
+
+</style>
+
+<%
+  issue_str = "<a href='#{@issue_url}'>[##{@issue.id}] #{@issue.subject}</a>"
+  msg_body = RtwNotification.format_email_body(@body, issue_str, @target_time)
+%>
+
+<div id="redmine_timewatch_notification">
+  <p>
+    <%= raw msg_body %>
+  </p>
+</div>
+

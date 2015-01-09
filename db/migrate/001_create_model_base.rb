@@ -15,6 +15,7 @@ class CreateModelBase < ActiveRecord::Migration
       t.integer :project_id
       t.integer :timebase
       t.integer :warning_ratio
+      t.string :email_subject
       t.text :recipients
       t.text :email_template
 

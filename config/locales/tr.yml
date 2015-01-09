@@ -9,6 +9,7 @@ tr:
       warning_ratio: 'Uyarı düzeyi'
       recipients: 'Eposta alıcı adresleri'
       recipients_info: 'virgül ile ayrılmış'
+      email_subject: 'Eposta başlığı'
       email_template: 'Eposta şablonu'
       email_template_info: 'iş numarası için ISSUE_NUMBER ve toplam harcanan zaman için ISSUE_SPENT_TIME anahtar kelimeleri içermelidir'
     project_settings:
