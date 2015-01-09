@@ -3,7 +3,7 @@
  + base db migrate, columns, models
  + plugin settings (recipient list, N base time, U warning percentage, email template)
  + calculate total spent time per issue on time_entry.save
- - add journal to issue if time_entry matches conditions
+ + add journal to issue if time_entry matches conditions
  + send email if time_entry matches conditions
  + logger.warn if time_entry matches conditions
  + project settings (recipient list, N base time, U warning percentage, email template)
@@ -12,4 +12,5 @@
  + make email body customizable
  + store notification history (?)
  - calculate timewatch thresholds properly
+
 
