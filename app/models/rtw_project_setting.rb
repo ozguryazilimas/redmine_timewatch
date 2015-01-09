@@ -14,7 +14,7 @@ class RtwProjectSetting < ActiveRecord::Base
 
 
   def self.settings_for_project(proj_id)
-    settings = for_project(proj_id).first_or_create(RedmineTimewatch.settings)
+    settings = for_project(proj_id).first_or_initialize(RedmineTimewatch.settings)
     settings
   end
 
