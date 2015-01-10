@@ -15,13 +15,12 @@
       <%= number_field_tag 'settings[timebase]', settings[:timebase], {:min => 1} %>
     </p>
     <p>
-      <%= content_tag :label, l('redmine_timewatch.settings.warning_ratio') %>
+      <%= content_tag :label, "#{l('redmine_timewatch.settings.warning_ratio')} (%)" %>
       <%= number_field_tag 'settings[warning_ratio]', settings[:warning_ratio], {:min => 1, :max => 99} %>
-      &#37;
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.email_subject') %>
-      <%= text_field_tag 'settings[email_subject]', settings[:email_subject] %>
+      <%= text_field_tag 'settings[email_subject]', settings[:email_subject], :size => 60 %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.recipients') + ' (*)' %>

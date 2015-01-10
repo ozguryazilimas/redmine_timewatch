@@ -21,13 +21,19 @@ module RedmineTimewatch
 
         def rtw_project_settings
           @settings = params[:settings]
-          project_setting = RtwProjectSetting.for_project(@project).first_or_initialize
-          project_setting.assign_attributes(@settings)
 
-          if project_setting.save!
+          if params[:reset].present?
+            RtwProjectSetting.destroy_all(:project_id => @project.id)
             flash[:notice] = l(:notice_successful_update)
           else
-            flash[:error] = l('redmine_timewatch.project_settings.error_update_not_successful')
+            project_setting = RtwProjectSetting.for_project(@project).first_or_initialize
+            project_setting.assign_attributes(@settings)
+
+            if project_setting.save!
+              flash[:notice] = l(:notice_successful_update)
+            else
+              flash[:error] = l('redmine_timewatch.project_settings.error_update_not_successful')
+            end
           end
 
           redirect_to settings_project_path(@project, :tab => 'rtw_project_settings')

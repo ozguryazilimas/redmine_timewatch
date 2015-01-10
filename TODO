@@ -12,6 +12,6 @@
  + make email body customizable
  + store notification history (?)
  / calculate timewatch thresholds properly
- - allow setting project settings to default (a.k.a. delete project setting)
+ + allow setting project settings to default (a.k.a. delete project setting)
 
 
