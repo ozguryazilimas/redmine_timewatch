@@ -43,25 +43,10 @@ module RedmineTimewatch
                 Rails.logger.warn "RTW issue #{issue.id} has spent hours #{current_spent_time} is over threshold"
 
                 target_time = (current_factor + 1) * settings.timebase
-                RtwNotification.process_spent_time_notification(issue, settings,target_time)
-                rtw_create_issue_journal(settings, current_spent_time)
+                RtwNotification.process_spent_time_notification(issue, settings, target_time, current_spent_time)
               end
             end
           end
-        end
-
-        def rtw_create_issue_journal(settings, current_spent_time)
-          journal_msg =  "From   : #{Setting.mail_from}\r\n"
-          journal_msg += "To     : #{settings.recipients}\r\n"
-          journal_msg += "Subject: [##{issue.id}] #{issue.subject}: #{settings.email_subject}\r\n"
-          journal_msg += "\r\n"
-          journal_msg += RtwNotification.format_email_body(settings.email_template, "##{issue.id}", current_spent_time)
-
-          init_journal_user = User.find_by_login('admin')
-
-          new_journal = Journal.new(:journalized => issue, :user => init_journal_user, :notes => journal_msg)
-          new_journal.notify = false
-          new_journal.save!
         end
 
       end

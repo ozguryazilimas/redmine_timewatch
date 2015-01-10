@@ -27,15 +27,21 @@ class RtwNotification < ActiveRecord::Base
     ret
   end
 
-  def self.process_spent_time_notification(issue, settings, target_time)
-    rtwn = create(
-      :issue_id => issue.id,
-      :spent_time => issue.total_spent_hours,
-      :timebase => settings.timebase,
-      :warning_ratio => settings.warning_ratio,
-      :recipients => settings.recipients
-    )
+  def self.create_issue_journal(issue, settings, current_spent_time)
+    journal_msg =  "From   : #{Setting.mail_from}\r\n"
+    journal_msg += "To     : #{settings.recipients}\r\n"
+    journal_msg += "Subject: [##{issue.id}] #{issue.subject}: #{settings.email_subject}\r\n"
+    journal_msg += "\r\n"
+    journal_msg += format_email_body(settings.email_template, "##{issue.id}", current_spent_time)
 
+    init_journal_user = User.find_by_login('admin')
+
+    new_journal = Journal.new(:journalized => issue, :user => init_journal_user, :notes => journal_msg)
+    new_journal.notify = false
+    new_journal.save!
+  end
+
+  def self.send_email_notification(issue, settings, target_time)
     Mailer.timewatch_spent_time_over_threshold(
       issue,
       settings.email_template,
@@ -43,6 +49,22 @@ class RtwNotification < ActiveRecord::Base
       settings.recipients,
       target_time.to_i
     ).deliver
+  end
+
+  def self.save_notification(issue, settings)
+    rtwn = create(
+      :issue_id => issue.id,
+      :spent_time => issue.total_spent_hours,
+      :timebase => settings.timebase,
+      :warning_ratio => settings.warning_ratio,
+      :recipients => settings.recipients
+    )
+  end
+
+  def self.process_spent_time_notification(issue, settings, target_time, current_spent_time)
+      save_notification(issue, settings)
+      create_issue_journal(issue, settings, current_spent_time)
+      send_email_notification(issue, settings, target_time)
   end
 
   def self.format_email_body(body, issue_info, target_time)
