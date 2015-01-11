@@ -21,6 +21,7 @@ class RtwNotification < ActiveRecord::Base
     latest = RtwNotification.for_issue(issue).order('updated_at desc').first
 
     if latest.present?
+      # extra extra failsafe to avoid race conditions between issue.save time_entry.save journal.save
       ret = latest.spent_time rescue 0.0
     end
 
@@ -37,7 +38,7 @@ class RtwNotification < ActiveRecord::Base
     init_journal_user = User.find_by_login('admin')
 
     new_journal = Journal.new(:journalized => issue, :user => init_journal_user, :notes => journal_msg)
-    new_journal.notify = false
+    new_journal.notify = true
     new_journal.save!
   end
 
