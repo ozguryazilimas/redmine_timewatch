@@ -59,12 +59,15 @@ class RtwNotification < ActiveRecord::Base
       :warning_ratio => settings.warning_ratio,
       :recipients => settings.recipients
     )
+
+    rtwn
   end
 
   def self.process_spent_time_notification(issue, settings, target_time, current_spent_time)
-      save_notification(issue, settings)
-      create_issue_journal(issue, settings, current_spent_time)
-      send_email_notification(issue, settings, target_time)
+    Rails.logger.warn "RTW issue #{issue.id} has spent hours #{current_spent_time} is over threshold"
+    save_notification(issue, settings)
+    create_issue_journal(issue, settings, current_spent_time)
+    send_email_notification(issue, settings, target_time)
   end
 
   def self.format_email_body(body, issue_info, target_time)

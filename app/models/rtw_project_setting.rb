@@ -30,5 +30,35 @@ class RtwProjectSetting < ActiveRecord::Base
     current_spent_time.to_i / timebase
   end
 
+  def is_above_threshold(issue_id, current_spent_time)
+    above_threshold = false
+
+    Rails.logger.debug "RTW issue #{issue_id} has total spent hours #{current_spent_time.inspect}"
+
+    current_level = calc_level(current_spent_time)
+    should_check = (current_level.to_i == 0) || (current_level >= warning_level)
+
+    current_factor = calc_factor(current_spent_time)
+    last_spent_time = RtwNotification.last_spent_time_for_issue(issue_id)
+    last_level = calc_level(last_spent_time)
+    last_factor = calc_factor(last_spent_time)
+
+    Rails.logger.debug "RTW current_factor:#{current_factor} last_factor:#{last_factor} last_spent_time:#{last_spent_time} last_level:#{last_level}"
+
+    if current_factor > last_factor + 1
+      above_threshold = true
+    elsif current_factor == last_factor + 1
+      if (last_level < warning_level) || (current_level >= warning_level)
+        above_threshold = true
+      end
+    else # current_factor == last_factor
+      if (current_level >= warning_level) && (last_level < warning_level)
+        above_threshold = true
+      end
+    end
+
+    above_threshold
+  end
+
 end
 
