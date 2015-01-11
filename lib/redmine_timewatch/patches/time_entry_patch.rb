@@ -21,7 +21,7 @@ module RedmineTimewatch
       module InstanceMethods
 
         def timewatch_spent_time_notify
-          if issue
+          if issue && issue.project.module_enabled?('timewatch')
             settings = RtwProjectSetting.settings_for_project(issue.project_id)
             current_spent_time = issue.total_spent_hours
 
