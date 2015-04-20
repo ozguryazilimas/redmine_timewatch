@@ -12,7 +12,7 @@
 
 <%
   issue_str = "<a href='#{@issue_url}'>[##{@issue.id}] #{@issue.subject}</a>"
-  msg_body = RtwNotification.format_email_body(@body, issue_str, @target_time)
+  msg_body = RtwNotification.format_email_body(@body, issue_str, @target_time, @for_type)
 %>
 
 <div id="redmine_timewatch_notification">

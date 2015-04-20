@@ -3,7 +3,8 @@ class RtwProjectSetting < ActiveRecord::Base
   unloadable
 
   # these prevent model upbject attributes to be assigned, no idea why
-  # attr_accessor :project_id, :timebase, :warning_ratio, :recipients, :email_subject, :email_template, :created_at, :updated_at
+  # attr_accessor :project_id, :timebase, :warning_ratio, :email_subject, :recipients, :email_template,
+  #   :created_at, :updated_at, :notify_on_estimated, :custom_field_id, :warning_ratio_estimated, :email_subject_estimated, :recipients_estimated, :email_template_estimated
 
   # belongs_to :project
 
@@ -58,6 +59,11 @@ class RtwProjectSetting < ActiveRecord::Base
     end
 
     above_threshold
+  end
+
+  def custom_estimated_value(issue)
+    cf = CustomField.find(custom_field_id)
+    issue.custom_field_value(cf)
   end
 
 end

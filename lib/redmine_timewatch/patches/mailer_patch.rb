@@ -15,7 +15,7 @@ module RedmineTimewatch
 
       module InstanceMethods
 
-        def timewatch_spent_time_over_threshold(issue, mail_body, mail_subject, mail_recipients, target_time)
+        def timewatch_spent_time_over_threshold(issue, mail_body, mail_subject, mail_recipients, target_time, target_type)
           redmine_headers 'Project' => issue.project.identifier,
                           'Issue-Id' => issue.id,
                           'Issue-Author' => issue.author.login
@@ -29,6 +29,7 @@ module RedmineTimewatch
           @body = mail_body
           @subject = mail_subject
           @target_time = target_time
+          @for_type = target_type
           @issue_url = url_for(:controller => 'issues', :action => 'show', :id => issue)
 
           mail :to => recipients,
