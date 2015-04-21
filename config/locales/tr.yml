@@ -3,15 +3,20 @@ tr:
   permission_rtw_timewatch: 'Zaman Eşiği Uyarısı'
   redmine_timewatch:
     settings:
-      header: 'Öntanımlı Uyarı Ayarları'
-      info: 'Uyarı zaman eşik değeri, uyarı zaman aralığı ve uyarı düzeyi çarpılarak belirlenmektedir. Tüm uyarı zaman aralığı katlarında da eşik değeri geçilince uyarı yapılmaktadır.'
+      header: 'iÖzel Zaman Eşiği Uyarı Ayarları'
+      header_estimated: 'Tahmini Zaman Eşiği Uyarı Ayarları'
+      info: 'Uyarı zaman eşik değeri, uyarı zaman aralığı ve uyarı düzeyi çarpılarak hesaplanır. Tüm uyarı zaman aralığı katlarında da eşik değeri geçilince uyarı yapılmaktadır.'
+      info_estimated: 'Uyarı zaman eşik değeri, özel tahmini zaman alanı değeri ve uyarı düzeyi çarpılarak hesaplanır. Eşik değeri aşıldığında bir kere uyarı gönderilir.'
       timebase: 'Uyarı zaman aralığı'
       warning_ratio: 'Uyarı düzeyi'
       recipients: 'Eposta alıcı adresleri'
       recipients_info: 'virgül ile ayrılmış'
       email_subject: 'Eposta başlığı'
       email_template: 'Eposta şablonu'
-      email_template_info: 'iş numarası için ISSUE_NUMBER ve toplam harcanan zaman için ISSUE_SPENT_TIME anahtar kelimeleri içermelidir'
+      email_template_info: 'iş numarası için ISSUE_NUMBER ve eşik zaman değeri için ISSUE_SPENT_TIME / ISSUE_CUSTOM_ESTIMATED_TIME anahtar kelimeleri içermelidir'
+      notify_on_custom: 'Özel zaman eşiği uyarısı oluştur'
+      notify_on_estimated: 'Zaman tahmini uyarısı oluştur'
+      estimated_custom_field: 'Zaman tahmini özel alanı'
     project_settings:
       label_timewatch: 'Zaman Uyarısı'
       error_update_not_successful: 'Proje uyarı ayarları güncellenirken bir sorun oluştu'

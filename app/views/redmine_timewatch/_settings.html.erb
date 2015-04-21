@@ -1,3 +1,8 @@
 
-<%= render :partial => 'shared/redmine_timewatch_settings', :locals => {:settings => settings} %>
+<%=
+  render :partial => 'shared/redmine_timewatch_settings', :locals => {
+    :settings => settings,
+    :custom_field_options => IssueCustomField.sorted.where(:field_format => 'float').map{|k| [k.name, k.id]}
+  }
+%>
 

@@ -17,6 +17,7 @@ Redmine::Plugin.register :redmine_timewatch do
 
   settings :partial => 'redmine_timewatch/settings',
     :default => {
+      :notify_on_custom => false,
       :timebase => 10,
       :warning_ratio => 75,
       :recipients => '',

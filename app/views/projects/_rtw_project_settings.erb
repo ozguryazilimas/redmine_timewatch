@@ -7,7 +7,13 @@
 %>
 
   <%= hidden_field_tag 'settings[project_id]', @project.id %>
-  <%= render :partial => 'shared/redmine_timewatch_settings', :locals => {:settings => settings} %>
+  <%=
+    render :partial => 'shared/redmine_timewatch_settings', :locals => {
+      :settings => settings,
+      :custom_field_options => @project.issue_custom_fields.
+                                select{|k| k.field_format == 'float'}.map{|k| [k.name, k.id]}
+    }
+  %>
 
   <p>
     <%= submit_tag l(:button_save) %>

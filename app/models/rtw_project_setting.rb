@@ -4,7 +4,8 @@ class RtwProjectSetting < ActiveRecord::Base
 
   # these prevent model upbject attributes to be assigned, no idea why
   # attr_accessor :project_id, :timebase, :warning_ratio, :email_subject, :recipients, :email_template,
-  #   :created_at, :updated_at, :notify_on_estimated, :custom_field_id, :warning_ratio_estimated, :email_subject_estimated, :recipients_estimated, :email_template_estimated
+  #   :created_at, :updated_at, :notify_on_custom, :notify_on_estimated, :custom_field_id, :warning_ratio_estimated,
+  #   :email_subject_estimated, :recipients_estimated, :email_template_estimated
 
   # belongs_to :project
 
@@ -32,6 +33,7 @@ class RtwProjectSetting < ActiveRecord::Base
   end
 
   def is_above_threshold(issue_id, current_spent_time)
+    return false unless notify_on_custom
     above_threshold = false
 
     Rails.logger.debug "RTW issue #{issue_id} has total spent hours #{current_spent_time.inspect}"
@@ -63,7 +65,7 @@ class RtwProjectSetting < ActiveRecord::Base
 
   def custom_estimated_value(issue)
     cf = CustomField.find(custom_field_id)
-    issue.custom_field_value(cf)
+    issue.custom_field_value(cf).to_f
   end
 
 end

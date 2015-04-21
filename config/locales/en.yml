@@ -3,15 +3,20 @@ en:
   permission_rtw_timewatch: 'Time Threshold Notification'
   redmine_timewatch:
     settings:
-      header: 'Default Notification Settings'
+      header: 'Custom Time Threshold Notification Settings'
+      header_estimated: 'Estimated Time Threshold Notification Settings'
       info: 'Notification threshold is calculated by multiplying time base interval with warning ratio. Notifications are send at every multitude of time base when threshold is passed.'
+      info_estimated: 'Threshold is calculated by multiplying custom estimated time with warning ratio. One notification is sent when threshold is passed.'
       timebase: 'Notification time base interval in hours'
       warning_ratio: 'Warning ratio'
       recipients: 'Email recipients'
       recipients_info: 'comma separated'
       email_subject: 'Email subject'
       email_template: 'Email template'
-      email_template_info: 'should include ISSUE_NUMBER for issue number and ISSUE_SPENT_TIME for issue spent time values'
+      email_template_info: 'should include ISSUE_NUMBER for issue number and ISSUE_SPENT_TIME / ISSUE_CUSTOM_ESTIMATED_TIME for threshold values'
+      notify_on_custom: 'Create notification for custom time'
+      notify_on_estimated: 'Create notification for estimated time'
+      estimated_custom_field: 'Custom field for estimated time'
     project_settings:
       label_timewatch: 'Time Alerts'
       error_update_not_successful: 'Unable to update project notification settings'

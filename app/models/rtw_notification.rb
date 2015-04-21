@@ -96,7 +96,7 @@ class RtwNotification < ActiveRecord::Base
       :warning_ratio => settings.warning_ratio,
       :recipients => settings.recipients,
       :notification_type => for_type,
-      :custom_estimated_id => settings.custom_estimated_id,
+      :custom_estimated_id => settings.custom_field_id,
       :custom_estimated_time => settings.custom_estimated_value(issue)
     )
 

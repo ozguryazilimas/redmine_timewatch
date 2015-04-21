@@ -41,10 +41,11 @@ module RedmineTimewatch
               end
 
               # check if issue spent time is approaching estimated time
-              if settings.notify_on_estimated && settings.custom_estimated_not_notified(issue)
-                target_time = settings.custom_estimated_threshold(issue)
+              if settings.notify_on_estimated && RtwNotification.custom_estimated_not_notified(issue)
+                target_time = settings.custom_estimated_value(issue)
 
-                if current_spent_time >= (target_time * settings.warning_ratio_estimated / 100.0)
+                if target_time && target_time != 0.0 &&
+                  current_spent_time >= (target_time * settings.warning_ratio_estimated / 100.0)
                   # RtwNotification.process_custom_estimated_time_notification(
                   RtwNotification.process_spent_time_notification(
                     issue,

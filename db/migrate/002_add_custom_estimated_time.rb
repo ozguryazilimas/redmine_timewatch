@@ -1,6 +1,7 @@
 class AddCustomEstimatedTime < ActiveRecord::Migration
 
   def change
+    add_column :rtw_project_settings, :notify_on_custom, :boolean, :default => false, :null => false
     add_column :rtw_project_settings, :notify_on_estimated, :boolean, :default => false, :null => false
     add_column :rtw_project_settings, :custom_field_id, :integer, :null => false
     add_column :rtw_project_settings, :warning_ratio_estimated, :integer, :default => 100

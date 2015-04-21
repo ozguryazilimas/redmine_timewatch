@@ -1,4 +1,4 @@
 
 <% issue_str = "[##{@issue.id}] #{@issue.subject}" %>
-<%= RtwNotification.format_email_body(@body, issue_str, @target_time) %>
+<%= RtwNotification.format_email_body(@body, issue_str, @target_time, @for_type) %>
 
