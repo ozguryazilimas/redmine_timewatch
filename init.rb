@@ -23,10 +23,10 @@ Redmine::Plugin.register :redmine_timewatch do
       :recipients => '',
       :email_subject => 'Harcanan zaman uyarısı',
       :email_template => '' +
-        "ISSUE_NUMBER işi için harcanan zaman ISSUE_SPENT_TIME saate yaklaşmaktadır." +
+        "ISSUE_NUMBER işi için harcanan zaman ISSUE_SPENT_TIME saate yaklaşmaktadır. " +
         "Bu işe daha fazla zaman harcanmamasını istiyorsanız lütfen iş kaydına yazarak belirtiniz.\r\n" +
         "\r\n" +
-        "Bu iş için yapılanları işteki kayıtlardan öğrenebilir, açıklamaları yeterli bulmamanız halinde" +
+        "Bu iş için yapılanları işteki kayıtlardan öğrenebilir, açıklamaları yeterli bulmamanız halinde " +
         "daha detaylı açıklama isteğinizi işe yazarak belirtebilirsiniz. Ekibimiz daha detaylı açıklama yapacaktır.\r\n" +
         "\r\n" +
         "Teşekkürler,\r\n" +
@@ -37,10 +37,10 @@ Redmine::Plugin.register :redmine_timewatch do
       :email_subject_estimated => 'Harcanan zaman uyarısı',
       :recipients_estimated => '',
       :email_template_estimated => '' +
-        "ISSUE_NUMBER işi için harcanan zaman tahmin edilen ISSUE_CUSTOM_ESTIMATED_TIME saate yaklaşmaktadır." +
+        "ISSUE_NUMBER işi için harcanan zaman tahmin edilen ISSUE_CUSTOM_ESTIMATED_TIME saate yaklaşmaktadır. " +
         "Bu işe daha fazla zaman harcanmamasını istiyorsanız lütfen iş kaydına yazarak belirtiniz.\r\n" +
         "\r\n" +
-        "Bu iş için yapılanları işteki kayıtlardan öğrenebilir, açıklamaları yeterli bulmamanız halinde" +
+        "Bu iş için yapılanları işteki kayıtlardan öğrenebilir, açıklamaları yeterli bulmamanız halinde " +
         "daha detaylı açıklama isteğinizi işe yazarak belirtebilirsiniz. Ekibimiz daha detaylı açıklama yapacaktır.\r\n" +
         "\r\n" +
         "Teşekkürler,\r\n" +
