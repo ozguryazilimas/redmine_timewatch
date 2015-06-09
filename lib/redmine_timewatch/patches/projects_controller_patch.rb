@@ -37,6 +37,15 @@ module RedmineTimewatch
           end
 
           redirect_to settings_project_path(@project, :tab => 'rtw_project_settings')
+
+        rescue ActiveRecord::RecordInvalid => e
+          err_msg = project_setting.errors.messages.map do |k, v|
+            attr_key = I18n.t("activerecord.attributes.rtw_project_setting.#{k}")
+            "#{attr_key} #{v.to_sentence}"
+          end
+
+          flash[:error] = err_msg.join(', ')
+          redirect_to settings_project_path(@project, :tab => 'rtw_project_settings')
         end
 
       end

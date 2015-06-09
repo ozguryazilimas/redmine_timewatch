@@ -9,6 +9,25 @@ class RtwProjectSetting < ActiveRecord::Base
 
   # belongs_to :project
 
+  NOTIFY_ON_CUSTOM_ATTRIBUTES = [
+    :timebase,
+    :warning_ratio,
+    :email_subject,
+    :recipients,
+    :email_template
+  ]
+
+  NOTIFY_ON_ESTIMATED_ATTRIBUTES = [
+    :custom_field_id,
+    :warning_ratio_estimated,
+    :email_subject_estimated,
+    :recipients_estimated,
+    :email_template_estimated
+  ]
+
+  validates_presence_of *NOTIFY_ON_CUSTOM_ATTRIBUTES, :if => Proc.new{|rtws| rtws.notify_on_custom}
+  validates_presence_of *NOTIFY_ON_ESTIMATED_ATTRIBUTES, :if => Proc.new{|rtws| rtws.notify_on_estimated}
+
   scope :for_project, ->(project) {
     proj_id = project.is_a?(Class) ? project.id : project
     where(:project_id => proj_id)

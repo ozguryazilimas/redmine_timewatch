@@ -53,7 +53,7 @@
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.estimated_custom_field') %>
-      <%= select_tag 'settings[custom_field_id]', options_for_select(custom_field_options, settings[:custom_field_id]) %>
+      <%= select_tag 'settings[custom_field_id]', options_for_select(custom_field_options, settings[:custom_field_id]), :include_blank => true %>
     </p>
     <p>
       <%= content_tag :label, "#{l('redmine_timewatch.settings.warning_ratio')} (%)" %>

@@ -20,4 +20,21 @@ tr:
     project_settings:
       label_timewatch: 'Zaman Uyarısı'
       error_update_not_successful: 'Proje uyarı ayarları güncellenirken bir sorun oluştu'
+  activerecord:
+    models:
+      rtw_project_setting: 'Zaman Uyarısı Ayarları'
+    attributes:
+      rtw_project_setting:
+        timebase: 'Uyarı zaman aralığı'
+        warning_ratio: 'Uyarı düzeyi'
+        recipients: 'Eposta alıcı adresleri'
+        email_subject: 'Eposta başlığı'
+        email_template: 'Eposta şablonu'
+        notify_on_custom: 'Özel zaman eşiği uyarısı'
+        notify_on_estimated: 'Zaman tahmini uyarısı'
+        custom_field_id: 'Zaman tahmini özel alanı'
+        warning_ratio_estimated: 'Uyarı düzeyi'
+        email_subject_estimated: 'Eposta başlığı'
+        recipients_estimated: 'Eposta alıcı adresleri'
+        email_template_estimated: 'Eposta şablonu'
 

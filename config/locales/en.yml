@@ -20,4 +20,21 @@ en:
     project_settings:
       label_timewatch: 'Time Alerts'
       error_update_not_successful: 'Unable to update project notification settings'
+  activerecord:
+    models:
+      rtw_project_setting: 'Time Alerts Settings'
+    attributes:
+      rtw_project_setting:
+        timebase: 'Notification time base interval in hours'
+        warning_ratio: 'Warning ratio'
+        recipients: 'Email recipients'
+        email_subject: 'Email subject'
+        email_template: 'Email template'
+        notify_on_custom: 'Create notification for custom time'
+        notify_on_estimated: 'Create notification for estimated time'
+        custom_field_id: 'Custom field for estimated time'
+        warning_ratio_estimated: 'Warning ratio'
+        email_subject_estimated: 'Email subject'
+        recipients_estimated: 'Email recipients'
+        email_template_estimated: 'Email template'
 
