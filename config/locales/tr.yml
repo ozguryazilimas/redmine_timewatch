@@ -3,7 +3,7 @@ tr:
   permission_rtw_timewatch: 'Zaman Eşiği Uyarısı'
   redmine_timewatch:
     settings:
-      header: 'iÖzel Zaman Eşiği Uyarı Ayarları'
+      header: 'Özel Zaman Eşiği Uyarı Ayarları'
       header_estimated: 'Tahmini Zaman Eşiği Uyarı Ayarları'
       info: 'Uyarı zaman eşik değeri, uyarı zaman aralığı ve uyarı düzeyi çarpılarak hesaplanır. Tüm uyarı zaman aralığı katlarında da eşik değeri geçilince uyarı yapılmaktadır.'
       info_estimated: 'Uyarı zaman eşik değeri, özel tahmini zaman alanı değeri ve uyarı düzeyi çarpılarak hesaplanır. Eşik değeri aşıldığında bir kere uyarı gönderilir.'
