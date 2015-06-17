@@ -27,7 +27,7 @@ module RedmineTimewatch
             flash[:notice] = l(:notice_successful_update)
           else
             project_setting = RtwProjectSetting.for_project(@project).first_or_initialize
-            project_setting.assign_attributes(@settings)
+            project_setting.assign_attributes(RtwProjectSetting.sanitize_settings(@settings))
 
             if project_setting.save!
               flash[:notice] = l(:notice_successful_update)

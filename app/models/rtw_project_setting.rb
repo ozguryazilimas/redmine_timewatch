@@ -2,10 +2,9 @@
 class RtwProjectSetting < ActiveRecord::Base
   unloadable
 
-  # these prevent model upbject attributes to be assigned, no idea why
-  # attr_accessor :project_id, :timebase, :warning_ratio, :email_subject, :recipients, :email_template,
-  #   :created_at, :updated_at, :notify_on_custom, :notify_on_estimated, :custom_field_id, :warning_ratio_estimated,
-  #   :email_subject_estimated, :recipients_estimated, :email_template_estimated
+  attr_accessible :project_id, :timebase, :warning_ratio, :email_subject, :recipients, :email_template,
+    :created_at, :updated_at, :notify_on_custom, :notify_on_estimated, :custom_field_id,
+    :warning_ratio_estimated, :email_subject_estimated, :recipients_estimated, :email_template_estimated
 
   # belongs_to :project
 
@@ -24,6 +23,12 @@ class RtwProjectSetting < ActiveRecord::Base
     :recipients_estimated,
     :email_template_estimated
   ]
+
+  FALSIFY_ATTRS = [
+    :notify_on_estimated,
+    :notify_on_custom
+  ]
+
 
   validates_presence_of *NOTIFY_ON_CUSTOM_ATTRIBUTES, :if => Proc.new{|rtws| rtws.notify_on_custom}
   validates_presence_of *NOTIFY_ON_ESTIMATED_ATTRIBUTES, :if => Proc.new{|rtws| rtws.notify_on_estimated}
@@ -85,6 +90,14 @@ class RtwProjectSetting < ActiveRecord::Base
   def custom_estimated_value(issue)
     cf = CustomField.find(custom_field_id)
     issue.custom_field_value(cf).to_f
+  end
+
+  def self.sanitize_settings(settings)
+    FALSIFY_ATTRS.each do |attr|
+      settings[attr] = false if settings[attr].blank?
+    end
+
+    settings
   end
 
 end

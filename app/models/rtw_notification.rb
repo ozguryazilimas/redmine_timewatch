@@ -2,6 +2,10 @@
 class RtwNotification < ActiveRecord::Base
   unloadable
 
+  attr_accessible :issue_id, :spent_time, :timebase, :warning_ratio, :recipients, :created_at, :updated_at,
+    :custom_estimated_time, :custom_estimated_id, :notification_type
+
+
   ISSUE_NUMBER = 'ISSUE_NUMBER'
   ISSUE_SPENT_TIME = 'ISSUE_SPENT_TIME'
   ISSUE_CUSTOM_ESTIMATED_TIME = 'ISSUE_CUSTOM_ESTIMATED_TIME'
@@ -9,10 +13,6 @@ class RtwNotification < ActiveRecord::Base
   TYPE_SPENT = 'spent'
   TYPE_CUSTOM_ESTIMATED = 'custom_estimated'
 
-
-  # these prevent model upbject attributes to be assigned, no idea why
-  # attr_accessor :issue_id, :spent_time, :timebase, :warning_ratio, :recipients, :created_at, :updated_at,
-  #   :custom_estimated_time, :custom_estimated_id, :notification_type
 
   scope :for_issue, ->(issue) {
     issue_id = issue.is_a?(Class) ? issue.id : issue
