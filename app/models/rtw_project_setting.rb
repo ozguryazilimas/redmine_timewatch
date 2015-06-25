@@ -88,8 +88,17 @@ class RtwProjectSetting < ActiveRecord::Base
   end
 
   def custom_estimated_value(issue)
-    cf = CustomField.find(custom_field_id)
-    issue.custom_field_value(cf).to_f
+    return nil unless custom_field_id
+
+    begin
+      cf = CustomField.find(custom_field_id)
+      retval = issue.custom_field_value(cf).to_f
+    rescue ActiveRecord::RecordNotFound => e
+      Rails.logger.warn "Redmine Timewatch: Could not find CustomField while recording notification for id #{custom_field_id.inspect}"
+      retval = nil
+    end
+
+    retval
   end
 
   def self.sanitize_settings(settings)

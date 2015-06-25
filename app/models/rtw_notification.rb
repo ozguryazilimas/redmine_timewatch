@@ -19,10 +19,10 @@ class RtwNotification < ActiveRecord::Base
     where(:issue_id => issue_id)
   }
 
-  scope :latest_update, order('updated_at desc').first
+  scope :latest_update, -> { order('updated_at desc').first }
 
-  scope :for_spent, where(:notification_type => TYPE_SPENT)
-  scope :for_custom_estimated, where(:notification_type => TYPE_CUSTOM_ESTIMATED)
+  scope :for_spent, -> { where(:notification_type => TYPE_SPENT) }
+  scope :for_custom_estimated, -> { where(:notification_type => TYPE_CUSTOM_ESTIMATED) }
 
 
   def self.last_spent_time_for_issue(issue)
