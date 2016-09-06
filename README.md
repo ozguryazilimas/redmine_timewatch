@@ -1,28 +1,31 @@
 # Timewatch
-Redmine üzerinde harcanan zaman kayıtlarını temel alarak, e-posta yolu ile bilgi verip, iş kayıtlarının otomatik güncellenmesini sağlar.
-Redmine v3 uyumludur.
 
-## Özellikleri
-1. Özel Zaman Eşiği: Bir iş kaydına girilen toplam harcanan zaman; eklenti ayarlarında belirtilen zaman aralığı değerinin (Örn: 10 saat) yine eklenti ayarlarında belirtilen oranını (Örn: %80) geçtiği zaman iş kaydına yeni bir girdi ekler.
-2. Tahmini Zaman Eşiği: Bir projeye eklenen 'ondalık sayı' tipindeki özel alanına girilen toplam değer; eklenti ayarlarında belirtilen oranını (Örn: %80) geçtiği zaman iş kaydına yeni bir girdi ekler.
-3. İş kaydına eklenecek girdi özelleştirilebilir.
-4. Eklenti ayarları her projede farklı ayarlanabilir.
+Based on spend time logs on Redmine, Timewatch informs user with email, also it allows you to update issues automatically. 
+It is compatible with Redmine v3.
 
-## Ayarlar
-* Eklenti için ön tanımlı ayar kaydedilebileceği gibi, her proje için ayrı ayar da oluşturulabilir. Eklenti ayarlarına yönetici hesabı ile /administration/plugins/redmine_timewatch_plugin configure adresinden ulaşılabilir.
-* Eklentinin hangi özelliği kullanılacaksa o özellik etkinleştirilmelidir. 2 ayrı özellik ayrı ayrı etkin/pasif edilebilir.
-* Notification time base interval in hours: Yüzdesi alınacak zaman aralığı değeridir.
-* Warning ratio (%): Uyarı zaman aralığının alınacak yüzdesidir.
+## Features
 
-**Örnek:**
+1. Custom Time Threshold Notification: When total spent time entered in the issue exceeds specified time interval value in plugin settings (e.g. 10 hours) also the rate specified in the plugin settings (e.g. 80%), new entry is added in the issue.
+2. Estimated Time Threshold Notification: In the project, when the total value entered into custom field in decimal type exceeds the rate specified in plugin settings (e.g. 80%), new entry is added in the issue.
+3. Entries in the issue can be customized.
+4. You can configure timewatch to save different settings for each project.
+
+## Settings
+
+* As well as default settings can be saved, configuring timewatch to save different setting for each project is possible. Plugin settings are accessible at /administration/plugins/redmine_timewatch_plugin address with administration account by clicking 'Configure'.
+* The feature which will be used should be enabled. Two separate features can be activate or passivate.
+* Notification time base interval in hours: It is time interval value to take as a percentage.
+* Warning ratio (%): It is warning time interval to take as a percentage.
+
+Example:
 
 Notification time base interval in hours: 10
 Warning ratio (%): 80
 
-Sistem bu ayarlarla her 10 saatlik periyotlarda, +8 saat geçince iş kaydına -ayarlarda belirtilen- mesajı gönderecektir.
-İş kaydına girilen zaman değeri örn. 7 saat ise bir tepki vermeyecektir. 8 saat olunca uyarı mesajını gönderecektir. Harcanan zaman değeri 8 ve 10 arasında iken bir uyarı girmeyecektir. Çünkü daha önce 8. saatte uyarı yollandığı için, 9. saatte uyarı gönderilmeyip 18. saatte uyarı gönderilecektir.
+In each 10 hour period with these settings, after +8 hours, the system sends message which is specified in the settings.
+If  time log is entered in the issue e.g. 7 hours, it will not react. When the time will be 8 hours, the system sends warning message. If spend time is between 8 and 10 hours, there will no warning message in the issue. Because the message has been already sent about 8th hour, the warning message will not send at 9th hour. It will send at 18th hour.
 
-* Email konusu (Email subject): Uyarının gönderileceği epostanın konusudur.
-* Email alıcıları (Email recipients): Uyarı epostasının gönderileceği adresler girilir. Çoklu adresler virgül ile ayrılır. (ornek@ornek.com,ornek2@ornek.com)
-* Email şablonu: (Email template): Gönderilecek epostanın içeriğidir. Bu içerikte Redmine iş numarasını göstermek için ISSUE_NUMBER ve eşik zaman değeri için ISSUE_SPENT_TIME / ISSUE_CUSTOM_ESTIMATED_TIME anahtar kelimeleri kullanılmalıdır.
-* Tahmini süre için özel alan (Custom field for estimated time): Eklentinin dikkate alacağı özel alan (custom field) seçilir. Bunun için ilgili projeye 'ondalık sayı' tipinde bir özel alan eklenmiş olmalıdır.
+* Email subject: It is the subject of warning email will be sent.
+* Email recipients: The adresses to send warning email are written here. Multiple addresses are separated by comma. (example@example.com, example2@example.com)
+* Email template: It is the template of email will be sent. To show the issue number in Redmine, ISSUE_NUMBER is used. ISSUE_SPENT_TIME / ISSUE_CUSTOM_ESTIMATED_TIME is used for threshold time value.
+* Custom field for estimated time: Custom field which is took care of by timewatch plugin is selected. For this, you should add a custom field in 'decimal number' type  into related project.
