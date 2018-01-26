@@ -11,27 +11,27 @@
 
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.notify_on_custom') %>
-      <%= check_box_tag 'settings[notify_on_custom]', 1, settings[:notify_on_custom] %>
+      <%= check_box_tag 'settings[notify_on_custom]', 1, settings['notify_on_custom'] %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.timebase') %>
-      <%= number_field_tag 'settings[timebase]', settings[:timebase], {:min => 1} %>
+      <%= number_field_tag 'settings[timebase]', settings['timebase'], {:min => 1} %>
     </p>
     <p>
       <%= content_tag :label, "#{l('redmine_timewatch.settings.warning_ratio')} (%)" %>
-      <%= number_field_tag 'settings[warning_ratio]', settings[:warning_ratio], {:min => 1, :max => 99} %>
+      <%= number_field_tag 'settings[warning_ratio]', settings['warning_ratio'], {:min => 1, :max => 99} %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.email_subject') %>
-      <%= text_field_tag 'settings[email_subject]', settings[:email_subject], :size => 60 %>
+      <%= text_field_tag 'settings[email_subject]', settings['email_subject'], :size => 60 %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.recipients') + ' (*)' %>
-      <%= text_area_tag 'settings[recipients]', settings[:recipients], :rows => 5 %>
+      <%= text_area_tag 'settings[recipients]', settings['recipients'], :rows => 5 %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.email_template') + ' (**)' %>
-      <%= text_area_tag 'settings[email_template]', settings[:email_template], :rows => 10 %>
+      <%= text_area_tag 'settings[email_template]', settings['email_template'], :rows => 10 %>
     </p>
   </div>
 </fieldset>
@@ -49,27 +49,27 @@
 
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.notify_on_estimated') %>
-      <%= check_box_tag 'settings[notify_on_estimated]', 1, settings[:notify_on_estimated] %>
+      <%= check_box_tag 'settings[notify_on_estimated]', 1, settings['notify_on_estimated'] %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.estimated_custom_field') %>
-      <%= select_tag 'settings[custom_field_id]', options_for_select(custom_field_options, settings[:custom_field_id]), :include_blank => true %>
+      <%= select_tag 'settings[custom_field_id]', options_for_select(custom_field_options, settings['custom_field_id']), :include_blank => true %>
     </p>
     <p>
       <%= content_tag :label, "#{l('redmine_timewatch.settings.warning_ratio')} (%)" %>
-      <%= number_field_tag 'settings[warning_ratio_estimated]', settings[:warning_ratio_estimated], {:min => 1, :max => 100} %>
+      <%= number_field_tag 'settings[warning_ratio_estimated]', settings['warning_ratio_estimated'], {:min => 1, :max => 100} %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.email_subject') %>
-      <%= text_field_tag 'settings[email_subject_estimated]', settings[:email_subject_estimated], :size => 60 %>
+      <%= text_field_tag 'settings[email_subject_estimated]', settings['email_subject_estimated'], :size => 60 %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.recipients') + ' (*)' %>
-      <%= text_area_tag 'settings[recipients_estimated]', settings[:recipients_estimated], :rows => 5 %>
+      <%= text_area_tag 'settings[recipients_estimated]', settings['recipients_estimated'], :rows => 5 %>
     </p>
     <p>
       <%= content_tag :label, l('redmine_timewatch.settings.email_template') + ' (**)' %>
-      <%= text_area_tag 'settings[email_template_estimated]', settings[:email_template_estimated], :rows => 10 %>
+      <%= text_area_tag 'settings[email_template_estimated]', settings['email_template_estimated'], :rows => 10 %>
     </p>
   </div>
 </fieldset>
