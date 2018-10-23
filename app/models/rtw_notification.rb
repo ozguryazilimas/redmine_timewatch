@@ -1,6 +1,5 @@
 
 class RtwNotification < ActiveRecord::Base
-  unloadable
 
   attr_accessible :issue_id, :spent_time, :timebase, :warning_ratio, :recipients, :created_at, :updated_at,
     :custom_estimated_time, :custom_estimated_id, :notification_type

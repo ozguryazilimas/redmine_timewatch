@@ -1,6 +1,5 @@
 
 class RtwProjectSetting < ActiveRecord::Base
-  unloadable
 
   attr_accessible :project_id, :timebase, :warning_ratio, :email_subject, :recipients, :email_template,
     :created_at, :updated_at, :notify_on_custom, :notify_on_estimated, :custom_field_id,

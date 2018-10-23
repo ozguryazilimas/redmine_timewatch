@@ -5,12 +5,7 @@ module RedmineTimewatch
   module Patches
     module MailerPatch
       def self.included(base) # :nodoc:
-        # base.extend(ClassMethods)
         base.send(:include, InstanceMethods)
-
-        base.class_eval do
-          unloadable  # to make sure plugin is loaded in development mode
-        end
       end
 
       module InstanceMethods

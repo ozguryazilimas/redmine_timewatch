@@ -5,16 +5,10 @@ module RedmineTimewatch
   module Patches
     module ProjectsHelperPatch
       def self.included(base)
-        base.extend(ClassMethods)
         base.send(:include, InstanceMethods)
         base.class_eval do
-          unloadable
           alias_method_chain :project_settings_tabs, :redmine_timewatch
         end
-      end
-
-      module ClassMethods
-
       end
 
       module InstanceMethods
