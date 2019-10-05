@@ -1,4 +1,4 @@
-class AddCustomEstimatedTime < ActiveRecord::Migration
+class AddCustomEstimatedTime < ActiveRecord::Migration[5.2]
 
   def change
     add_column :rtw_project_settings, :notify_on_custom, :boolean, :default => false, :null => false

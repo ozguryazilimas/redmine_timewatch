@@ -78,6 +78,7 @@ class RtwNotification < ActiveRecord::Base
     end
 
     Mailer.timewatch_spent_time_over_threshold(
+      User.current,
       issue,
       mail_template,
       "[##{issue.id}] #{issue.subject}: #{mail_subject}",
