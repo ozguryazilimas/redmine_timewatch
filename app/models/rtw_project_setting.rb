@@ -1,12 +1,6 @@
 
 class RtwProjectSetting < ActiveRecord::Base
 
-  attr_accessible :project_id, :timebase, :warning_ratio, :email_subject, :recipients, :email_template,
-    :created_at, :updated_at, :notify_on_custom, :notify_on_estimated, :custom_field_id,
-    :warning_ratio_estimated, :email_subject_estimated, :recipients_estimated, :email_template_estimated
-
-  # belongs_to :project
-
   NOTIFY_ON_CUSTOM_ATTRIBUTES = [
     :timebase,
     :warning_ratio,

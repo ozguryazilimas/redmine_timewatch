@@ -1,7 +1,8 @@
+
 module RedmineTimewatch
 
   def self.settings
-    (Setting[:plugin_redmine_timewatch] || {}).with_indifferent_access
+    HashWithIndifferentAccess.new(Setting[:plugin_redmine_timewatch])
   end
 
 end

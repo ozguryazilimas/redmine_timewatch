@@ -1,7 +1,7 @@
 
 class RtwNotification < ActiveRecord::Base
 
-  attr_accessible :issue_id, :spent_time, :timebase, :warning_ratio, :recipients, :created_at, :updated_at,
+  attr_accessor :issue_id, :spent_time, :timebase, :warning_ratio, :recipients, :created_at, :updated_at,
     :custom_estimated_time, :custom_estimated_id, :notification_type
 
 
@@ -77,14 +77,15 @@ class RtwNotification < ActiveRecord::Base
       mail_recipients = settings.recipients_estimated
     end
 
-    Mailer.timewatch_spent_time_over_threshold(
-      issue,
-      mail_template,
-      "[##{issue.id}] #{issue.subject}: #{mail_subject}",
-      mail_recipients,
-      target_time.to_i,
-      for_type
-    ).deliver
+    args = {
+      :issue => issue,
+      :template => mail_template,
+      :subject => "[##{issue.id}] #{issue.subject}: #{mail_subject}",
+      :target_time => target_time.to_i,
+      :type => for_type
+    }
+
+    Mailer.deliver_timewatch_spent_time_over_threshold(mail_recipients, args)
   end
 
   def self.save_notification(issue, settings, for_type)
