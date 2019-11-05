@@ -21,7 +21,7 @@ module RedmineTimewatch
             sanitized_settings = HashWithIndifferentAccess.new(RtwProjectSetting.sanitize_settings(@settings))
             project_setting.assign_attributes(sanitized_settings)
 
-            if project_setting.save
+            if project_setting.save!
               flash[:notice] = l(:notice_successful_update)
             else
               flash[:error] = l('redmine_timewatch.project_settings.error_update_not_successful')

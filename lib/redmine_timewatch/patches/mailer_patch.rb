@@ -39,7 +39,7 @@ module RedmineTimewatch
           @issue = issue
           @body = args[:template]
           @subject = args[:subject]
-          @target_time = args[:arget_time]
+          @target_time = args[:target_time]
           @for_type = args[:type]
           @issue_url = url_for(:controller => 'issues', :action => 'show', :id => issue)
 
