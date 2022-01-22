@@ -1,4 +1,4 @@
-class CreateModelBase < ActiveRecord::Migration[4.2]
+class CreateRtwNotificationsAndRtwProjectSettings < ActiveRecord::Migration[4.2]
 
   def change
     create_table :rtw_notifications do |t|
