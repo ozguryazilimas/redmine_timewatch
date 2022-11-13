@@ -50,7 +50,8 @@ Redmine::Plugin.register :redmine_timewatch do
 
 end
 
-Rails.configuration.to_prepare do
+# Rails.configuration.to_prepare do
+RedmineApp::Application.config.after_initialize do
   [
     [TimeEntry, RedmineTimewatch::Patches::TimeEntryPatch],
     [ProjectsController, RedmineTimewatch::Patches::ProjectsControllerPatch],
