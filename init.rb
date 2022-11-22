@@ -5,7 +5,7 @@ Redmine::Plugin.register :redmine_timewatch do
   name 'Redmine Timewatch plugin'
   author 'Onur Kucuk'
   description 'Redmine plugin to track time_entry changes and setup alarms'
-  version '2.0.1'
+  version '2.1.0'
   url 'http://www.ozguryazilim.com.tr'
   author_url 'http://www.ozguryazilim.com.tr'
   requires_redmine :version_or_higher => '4.0.0'
