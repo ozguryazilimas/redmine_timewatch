@@ -1,7 +1,7 @@
 # Timewatch
 Redmine üzerinde harcanan zaman kayıtlarını temel alarak, e-posta yolu ile bilgi verip, iş kayıtlarının otomatik güncellenmesini sağlar.
 
-Bu eklenti Redmine 4.x ile uyumludur, Redmine 3.x ile kullanmak isterseniz redmine3 dalına bakınız.
+Bu eklenti Redmine 4.x ve 5.x ile uyumludur, Redmine 3.x ile kullanmak isterseniz redmine3 dalına bakınız.
 
 ## Özellikleri
 1. Özel Zaman Eşiği: Bir iş kaydına girilen toplam harcanan zaman; eklenti ayarlarında belirtilen zaman aralığı değerinin (Örn: 10 saat) yine eklenti ayarlarında belirtilen oranını (Örn: %80) geçtiği zaman iş kaydına yeni bir girdi ekler.
@@ -27,3 +27,9 @@ Sistem bu ayarlarla her 10 saatlik periyotlarda, +8 saat geçince iş kaydına -
 * Email alıcıları (Email recipients): Uyarı epostasının gönderileceği adresler girilir. Çoklu adresler virgül ile ayrılır. (ornek@ornek.com,ornek2@ornek.com)
 * Email şablonu: (Email template): Gönderilecek epostanın içeriğidir. Bu içerikte Redmine iş numarasını göstermek için ISSUE_NUMBER ve eşik zaman değeri için ISSUE_SPENT_TIME / ISSUE_CUSTOM_ESTIMATED_TIME anahtar kelimeleri kullanılmalıdır.
 * Tahmini süre için özel alan (Custom field for estimated time): Eklentinin dikkate alacağı özel alan (custom field) seçilir. Bunun için ilgili projeye 'ondalık sayı' tipinde bir özel alan eklenmiş olmalıdır.
+
+## Lisans
+
+Copyright (c) 2015, Onur Küçük. Licensed under [GNU GPLv2](LICENSE)
+
+

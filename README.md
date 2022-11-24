@@ -2,7 +2,7 @@
 
 Based on spend time logs on Redmine, Timewatch informs user with email, also it allows you to update issues automatically.
 
-This plugin is compatible with Redmine 4.x. If you want to use it with Redmine 3.x please use redmine3 branch.
+This plugin is compatible with Redmine 4.x and 5.x. If you want to use it with Redmine 3.x please use redmine3 branch.
 
 ## Features
 
@@ -30,4 +30,9 @@ If  time log is entered in the issue e.g. 7 hours, it will not react. When the t
 * Email recipients: The adresses to send warning email are written here. Multiple addresses are separated by comma. (example@example.com, example2@example.com)
 * Email template: It is the template of email will be sent. To show the issue number in Redmine, ISSUE_NUMBER is used. ISSUE_SPENT_TIME / ISSUE_CUSTOM_ESTIMATED_TIME is used for threshold time value.
 * Custom field for estimated time: Custom field which is took care of by timewatch plugin is selected. For this, you should add a custom field in 'decimal number' type  into related project.
+
+## License
+
+Copyright (c) 2015, Onur Küçük. Licensed under [GNU GPLv2](LICENSE)
+
 
