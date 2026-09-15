@@ -1,5 +1,4 @@
 require 'redmine'
-require_dependency File.join(File.dirname(__FILE__), 'lib/redmine_timewatch')
 
 Redmine::Plugin.register :redmine_timewatch do
   name 'Redmine Timewatch plugin'
